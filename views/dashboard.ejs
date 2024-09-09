@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>College Management System</h1>
+        <nav>
+            <form action="/dashboard" method="get"></form>
+            <ul>
+                <li><a href="index">Main Menu</a></li>
+
+            </ul>
+        </nav> 
+    </header>
+    <main>
+        <form action="dashboard" method="post">
+        <section id="overview">
+            <h2>Overview</h2>
+            <div class="cards">
+                <div class="total_student_card">
+                    <h3>Total Students</h3>
+                    <p><%= studentsLen %></p>
+                </div>
+                <div class="faculty_card">
+                    <h3>Total Faculty</h3>
+                    <p><%= teachersLen %></p>
+                </div>
+
+                <div class="course_card">
+                    <h3>Courses Offered</h3>
+                    
+                    <table class="course_tables">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% coursesData.forEach(function(course) { %>
+                                <tr>
+                                    <td><%= course %><td>
+                                </tr>
+                            <%})%>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </form>
+        </section>
+
+        </section>
+        <section id="recent-activities">
+            <h2>Recent Updates</h2>
+            <ul>
+
+            </ul>
+        </section>
+        <section id="quick-links">
+            <h2>Quick Links</h2>
+            <div class="links">
+                <a href="studentInfo">Student Information</a>
+                <a href="academic-management">Academic Management</a>
+
+                <a href="library-management">Library Management</a>
+            </div>
+        </section>
+        <script type="module" src="script.js"></script>
+    </main>
+    <footer>
+        <p>&copy; 2024 College Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information - College Management System</title>
+    <link rel="stylesheet" href="studentInfo.css">
+    <script defer src="studentInfo.js"></script>
+</head>
+<body>
+    <header>
+        <h1>College Management System</h1>
+        <nav>
+            <ul>
+                <li><a href="/index">Main Menu</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/academic-management">Academic Management</a></li>
+                <li><a href="/library-management">Library Management</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="student-list">
+            <h1>Fetch Student Information</h1>
+            <form id="student_form" action="get_info" method="get">
+                <label for="get_rollnumber">Roll Number:</label>
+                <input type="text" id="get_rollnumber" name="get_rollnumber" required>
+                <button type="submit">Get Student Info</button>
+            </form>
+            
+
+
+        </section>
+        
+        <section id="add-student">
+            <% if (email === 'slvsai414@gmail.com') { %>
+            <h2>Add New Student</h2>
+            <form action="/studentInfo" method="post">
+                <label for="student_name">Name:</label>
+                <input type="text" id="student_name" name="student_name" required>
+
+                <label for="student_roll">Roll Number:</label>
+                <input type="text" id="student_roll" name="student_roll" required>
+                
+                <label for="student_course">Department:</label>
+                <input type="text" id="student_course" name="student_course" required>
+                
+                <label for="student_year">Year:</label>
+                <input type="text" id="student_year" name="student_year" required>
+                
+                <button type="submit">Add Student</button>
+            </form>
+            <% } else { %>
+                <p>You Dont Have Permisson To Add Students</p>
+            <% } %>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 College Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

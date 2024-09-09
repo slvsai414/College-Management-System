@@ -1,0 +1,21 @@
+.logout-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.logout-container h2 {
+    color: #333;
+}
+
+.logout-container p {
+    font-size: 18px;
+}
+
+.logout-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.logout-container a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <header>
+        <h1>College Management System</h1>
+        <nav>
+
+            <ul>
+                
+                <li><a href="dashboard">Dashboard</a></li>
+                <li><a href="studentInfo">Student Information</a></li>
+                <li><a href="academic-management">Academic Management</a></li>
+                <!-- <li><a href="add_course">Add Course</a></li> -->
+                <li><a href="library-management">Library Management</a></li>
+                <div class="navbar-right">
+                    <% if (User) { %>
+                        <!-- User is logged in, hide sign-in link -->
+                        <li><a href="Logout" class="logout" target="_blank">Logout</a></li>
+                        
+                    <% } else {%>
+                        <!-- User is not logged in, show sign-in link -->
+                        <li><a href="login" class="sign-in" target="_blank">Sign in</a></li>
+                        <li><a href="register" target="_blank">Sign up</a></li>
+                    <% } %>
+
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h2>Dashboard</h2>
+            <p>Welcome to the College Management System. Use the navigation menu to access different sections.</p>
+        </section>
+        <section id="student_info">
+            <h2>Student Information</h2>
+            <p>Manage student records, enrollments, and attendance.</p>
+        </section>
+        <section id="academic-management">
+            <h2>Academic Management</h2>
+            <p>Handle course management, exams, and grading.</p>
+        </section>
+
+        <section id="library-management" class="lastline">
+            <h2>Library Management</h2>
+            <p>Manage library resources, borrowing, and returns.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 College Management System. All rights reserved.</p>
+    </footer>
+    <script src="dropdown.js"></script>
+</body>
+</html>
