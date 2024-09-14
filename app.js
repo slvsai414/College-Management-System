@@ -66,15 +66,17 @@ mongoose.connect('mongodb://127.0.0.1:27017/College_registrations')
 
 
 app.get("/", (req, res)=> {
-    res.render("index");
+    
 });
 
 
 app.get('/index',async(req, res)=> {
+
+    //const User = req.user;
     if (req.isAuthenticated()) {
-        const user = req.user;
+        res.render("index", { user:req.user })
         //console.log(user);
-        res.render('index', {User:user});
+        
     }else{
         res.render('login')
     }
@@ -84,9 +86,9 @@ app.get('/index',async(req, res)=> {
 
 app.get("/studentInfo",async(req,res)=> {
     if (req.isAuthenticated()) {
-        const email = req.user.email;
-        console.log(email);
-        res.render('studentInfo',{ email:email });
+        //const email = req.user.email;
+        //console.log(email);
+        res.render('studentInfo',{ Email:req.user.email });
     }else{
         res.render('login')
     }
@@ -95,10 +97,10 @@ app.get("/studentInfo",async(req,res)=> {
 
 app.get("/academic-management",async (req,res)=> {
     if (req.isAuthenticated()) {
-    const email = req.user.email;
+    //const email = req.user.email;
     const course = await Courses_Offered.find({})
     //console.log(course)
-    res.render("academic-management",{course_info:course,email:email});
+    res.render("academic-management",{course_info:course,email:req.user.email});
     }else{
         res.render("login")
     }
