@@ -20,15 +20,19 @@
                 <!-- <li><a href="add_course">Add Course</a></li> -->
                 <li><a href="library-management">Library Management</a></li>
                 <div class="navbar-right">
-                    <% if (User) { %>
+
                         <!-- User is logged in, hide sign-in link -->
+                         <% if (user){ %>
+
                         <li><a href="Logout" class="logout" target="_blank">Logout</a></li>
                         
-                    <% } else {%>
+                        <%} else{%>
+                        
                         <!-- User is not logged in, show sign-in link -->
                         <li><a href="login" class="sign-in" target="_blank">Sign in</a></li>
                         <li><a href="register" target="_blank">Sign up</a></li>
-                    <% } %>
+                        
+                        <% } %>
 
                 </div>
             </ul>
