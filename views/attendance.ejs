@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance & Holidays</title>
+    <link rel="stylesheet" href="attendance.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Attendance & Holidays Tracker</h1>
+
+        <!-- Form to enter registration number and view attendance -->
+        <div class="form-group">
+            <form action="/get_attd" method="get">
+            <label for="RollNumber">Enter Registration Number:</label>
+            <input type="text" id="regNumber" placeholder="Enter Registration Number" name="RollNumber">
+            <button id="viewAttendanceBtn" type="submit">View Attendance</button>
+            </form>
+        </div>
+
+
+            <!-- Form to update attendance -->
+            <div class="form-group">
+                <label for="updateDate">Select Date to Update Attendance:</label>
+                <input type="date" id="updateDate">
+            </div>
+
+            <div class="form-group">
+                <label for="updateStatus">Select Status:</label>
+                <select id="updateStatus">
+                    <option value="">-- Select Status --</option>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+            </div>
+
+            <button id="updateAttendanceBtn">Update Attendance</button>
+        </div>
+
+        <!-- Form to mark new attendance -->
+        <div class="form-group">
+            
+            <% if (Email === 'slvsai414@gmail.com') { %>
+            <h2>Mark Attendance</h2>
+            <!-- For RollNUmber -->
+        <form action="/attd" method="post">
+            <label for="RollNumber">Roll Number:</label>
+            <input type="text" id="RollNumber" name="RollNumber" required>
+            <!--For the date-->
+            <label for="Date">Select Date to Mark Attendance:</label>
+            <input type="date" id="Date" name="Date">
+            <!--for the status-->
+            <label for="status">Select Status:</label>
+            <select id="status" name="status">
+                <option value="">-- Select Status --</option>
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+            <button id="markAttendanceBtn">Mark Attendance</button>
+            <% }else{} %>
+        </form>
+        </div>
+
+
+    
+</body>
+</html>

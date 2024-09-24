@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -5,6 +6,7 @@ import bcrypt from "bcrypt";
 import { college_registration } from "./models/mongoose.js";
 import { Courses_Offered } from "./models/courses.js";
 import { student_data_details } from "./models/student_details.js";
+import { std_attendance } from "./models/attendance.js";
 import path from "path";
 import { register } from "module";
 import { fileURLToPath } from 'url';
@@ -16,6 +18,8 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 import flash from "connect-flash";
 import { error } from "console";
+import { type } from "os";
+import { get } from "http";
 
 
 
@@ -23,7 +27,7 @@ import { error } from "console";
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -54,7 +58,7 @@ app.use(express.json());
 
 //DbConnect
 
-mongoose.connect('mongodb://127.0.0.1:27017/College_registrations')
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("Mongodb is Connected");
 
@@ -105,6 +109,49 @@ app.get("/academic-management",async (req,res)=> {
         res.render("login")
     }
 });
+
+
+app.get('/attendance',async (req,res)=>{
+    if (req.isAuthenticated()) {
+
+        res.render('attendance',{ Email: req.user.email });
+    }else{
+        res.render("login")
+    }
+});
+
+
+app.post("/attd",async (req,res)=> {
+    try{
+        const stu_attendance = {
+            RollNumber:req.body.RollNumber,
+            Date:req.body.Date,
+            status:req.body.status
+
+    }
+
+    const ATTENDANCE = await std_attendance.create(stu_attendance);
+    res.status(201).send("Attendance Registered");
+    console.log(ATTENDANCE)
+    }catch(err) {
+        console.log(err)
+    }
+});
+
+app.get('/get_attd',async (req, res)=> {
+    const roll_number = req.query.RollNumber;
+    //console.log(roll_number)
+    if (!roll_number) {
+        return res.status(400).send("Roll Number is Required");
+    }
+
+    const get_attendance = await std_attendance.countDocuments({attendance: roll_number});
+    //console.log(get_attendance)
+    const percentage = (get_attendance/20)*100;
+    //console.log(percentage)
+
+});
+
 
 app.get('/add_course',async(req,res)=> {
     res.render('add_course')
