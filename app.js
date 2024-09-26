@@ -69,8 +69,9 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 
-app.get("/", (req, res)=> {
-    
+app.get('/', async (req, res) => {
+    res.render("login");
+
 });
 
 
